@@ -6,20 +6,25 @@
 			$("#networks p").html("You can find me all over the web")
 		});
 	
-		$("#hero").height($(window).height());$(window).resize(function(){
+		if($(window).height() > 990){
 			$("#hero").height($(window).height());
-			$("#hero").css("min-height","600px")
-		});
-		$("#work").height($(window).height());
-		$(window).resize(function(){
+
+			$(window).resize(function(){
+				$("#hero").height($(window).height());
+				$("#hero").css("min-height","990px")
+			});
+		
 			$("#work").height($(window).height());
-			$(".showcase-info").css("min-height","360px")
-		});
-		$("#networks").height($(window).height());
-		$(window).resize(function(){
+			$(window).resize(function(){
+				$("#work").height($(window).height());
+				$(".showcase-info").css("min-height","990px")
+			});
 			$("#networks").height($(window).height());
-			$("#networks").css("min-height","600px")
-		})
+			$(window).resize(function(){
+				$("#networks").height($(window).height());
+				$("#networks").css("min-height","990px")
+			})
+		}
 		$('ul.slides li a').click(function(e){
 			e.preventDefault();
 		})
