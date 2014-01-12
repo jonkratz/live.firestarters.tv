@@ -33,11 +33,15 @@
 
 
 	  if (entries.length > 0) {
-	  	var liveVideo = entries.shift();
-	    //embedVideo(getVideoId(liveVideo.media$group.media$content[0].url), 'playerContainer');
-	    embedVideo(getVideoId('www.youtube.com/embed/4oHl9gJfQWs?rel=0'), 'playerContainer');
+	  	var liveVideo = entries[0];//ASSUME: there is only 1 live event at a time
+	    var url = liveVideo.content.src;
+	    //the following is pretty hacky, we should be using api v3 and passing the format param to get the real ID back
+	    liveId = url.replace("https://gdata.youtube.com/feeds/api/users/Firestartersmusic/live/videos/", "").replace("?v=2", "");
+	    
+	    embedVideo(liveId, 'playerContainer');
+	    //embedVideo(getVideoId('www.youtube.com/embed/4oHl9gJfQWs?rel=0'), 'playerContainer');
 	  }else {
-	  	alert('no live vids')
+	  	//alert('no live vids')
 	  }
 
 	}
